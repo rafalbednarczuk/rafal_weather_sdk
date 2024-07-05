@@ -8,7 +8,7 @@ part 'forecast_day.g.dart';
 class ForecastDay with _$ForecastDay {
   const factory ForecastDay({
     required String datetime,
-    required String temp,
+    required double temp,
     required String icon,
     required String description,
   }) = _ForecastDay;
