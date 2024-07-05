@@ -1,7 +1,2 @@
-library rafal_weather_sdk;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/weather_api/weather_api_client.dart';
+export 'src/weather_api/unit_group.dart';
