@@ -20,7 +20,7 @@ ForecastDay _$ForecastDayFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ForecastDay {
-  String get datetime => throw _privateConstructorUsedError;
+  DateTime get datetime => throw _privateConstructorUsedError;
   double get temp => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $ForecastDayCopyWith<$Res> {
           ForecastDay value, $Res Function(ForecastDay) then) =
       _$ForecastDayCopyWithImpl<$Res, ForecastDay>;
   @useResult
-  $Res call({String datetime, double temp, String icon, String description});
+  $Res call({DateTime datetime, double temp, String icon, String description});
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$ForecastDayCopyWithImpl<$Res, $Val extends ForecastDay>
       datetime: null == datetime
           ? _value.datetime
           : datetime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$ForecastDayImplCopyWith<$Res>
       __$$ForecastDayImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String datetime, double temp, String icon, String description});
+  $Res call({DateTime datetime, double temp, String icon, String description});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$$ForecastDayImplCopyWithImpl<$Res>
       datetime: null == datetime
           ? _value.datetime
           : datetime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
@@ -140,7 +140,7 @@ class _$ForecastDayImpl implements _ForecastDay {
       _$$ForecastDayImplFromJson(json);
 
   @override
-  final String datetime;
+  final DateTime datetime;
   @override
   final double temp;
   @override
@@ -187,7 +187,7 @@ class _$ForecastDayImpl implements _ForecastDay {
 
 abstract class _ForecastDay implements ForecastDay {
   const factory _ForecastDay(
-      {required final String datetime,
+      {required final DateTime datetime,
       required final double temp,
       required final String icon,
       required final String description}) = _$ForecastDayImpl;
@@ -196,7 +196,7 @@ abstract class _ForecastDay implements ForecastDay {
       _$ForecastDayImpl.fromJson;
 
   @override
-  String get datetime;
+  DateTime get datetime;
   @override
   double get temp;
   @override

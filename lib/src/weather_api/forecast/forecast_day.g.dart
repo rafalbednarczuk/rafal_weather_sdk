@@ -8,7 +8,7 @@ part of 'forecast_day.dart';
 
 _$ForecastDayImpl _$$ForecastDayImplFromJson(Map<String, dynamic> json) =>
     _$ForecastDayImpl(
-      datetime: json['datetime'] as String,
+      datetime: DateTime.parse(json['datetime'] as String),
       temp: (json['temp'] as num).toDouble(),
       icon: json['icon'] as String,
       description: json['description'] as String,
@@ -16,7 +16,7 @@ _$ForecastDayImpl _$$ForecastDayImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ForecastDayImplToJson(_$ForecastDayImpl instance) =>
     <String, dynamic>{
-      'datetime': instance.datetime,
+      'datetime': instance.datetime.toIso8601String(),
       'temp': instance.temp,
       'icon': instance.icon,
       'description': instance.description,
