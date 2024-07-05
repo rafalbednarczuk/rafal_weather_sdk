@@ -68,8 +68,7 @@ class _WeatherForecastViewState extends State<WeatherForecastView> {
     setState(() {
       _loadingData = false;
       _error = false;
-      //TODO: document
-      _forecast = data.take(5).toList();
+      _forecast = data;
     });
   }
 
