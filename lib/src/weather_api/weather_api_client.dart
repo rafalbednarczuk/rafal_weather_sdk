@@ -54,6 +54,8 @@ class WeatherApiClient {
   /// location can be provided as a city name, for example "New York" or
   /// provided as latitude and longitude coordinates, for example  "40.73,-73.93".
   /// unitGroup parameter sets the type of units in the [ForecastDay] model.
+  ///
+  /// returns null if there is a connection error, API error or data parsing error
   Future<List<ForecastDay>?> getForecast({
     required String location,
     required UnitGroup unitGroup,
@@ -66,8 +68,7 @@ class WeatherApiClient {
       final forecastResponse =
           ForecastResponse.fromJson(response.data as Map<String, Object?>);
       return forecastResponse.days;
-    } on Exception catch (e) {
-      //TODO: handle different types of errors
+    } catch (_) {
       return null;
     }
   }

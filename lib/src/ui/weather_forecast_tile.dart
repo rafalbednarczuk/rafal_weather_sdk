@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
 
-final _dayOfWeekDateFormat = DateFormat(DateFormat.ABBR_MONTH_DAY);
+final _dayOfWeekDateFormat = DateFormat(DateFormat.ABBR_WEEKDAY);
 
 /// A widget that displays single [ForecastDay]
 /// The widget is used in [WeatherForecastView]

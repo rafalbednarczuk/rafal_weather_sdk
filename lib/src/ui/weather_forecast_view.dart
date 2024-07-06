@@ -14,7 +14,7 @@ import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
 ///
 /// See also:
 ///
-///  * [WeatherApiClient], which access forecast data directly
+///  * [WeatherApiClient], which accesses forecast data directly
 
 class WeatherForecastView extends StatefulWidget {
   final String location;
@@ -43,6 +43,11 @@ class _WeatherForecastViewState extends State<WeatherForecastView> {
   void initState() {
     super.initState();
     _refreshData();
+  }
+
+  @override
+  void didUpdateWidget(WeatherForecastView oldWidget) {
+    super.didUpdateWidget(oldWidget);
   }
 
   Future<void> _refreshData() async {
@@ -75,10 +80,25 @@ class _WeatherForecastViewState extends State<WeatherForecastView> {
   @override
   Widget build(BuildContext context) {
     if (_loadingData) {
-      return Text("loading data");
+      return const Center(
+        child: SizedBox(
+          height: 84,
+          width: 84,
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
     }
     if (_error) {
-      return Text("error");
+      return Column(
+        children: [
+          const Text(
+            "There was a problem fetching forcast data.\n"
+            "Please check if the location and date you provided is valid",
+          ),
+          const SizedBox(height: 8),
+          OutlinedButton(onPressed: _refreshData, child: const Text("Refresh")),
+        ],
+      );
     }
     return Row(
       children: _forecast!
