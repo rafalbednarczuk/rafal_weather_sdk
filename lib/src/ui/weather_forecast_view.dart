@@ -5,7 +5,7 @@ import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
 
 /// A widget that displays daily forecast for the next 4 days.
 ///
-/// [WeatherForecastView] uses [date] as a start of a forecast.
+/// [WeatherForecastView] uses [date] as the start of a forecast.
 ///
 /// [location] should be provided as a city name, for example "New York" or
 /// provided as latitude and longitude coordinates, for example  "40.73,-73.93".
