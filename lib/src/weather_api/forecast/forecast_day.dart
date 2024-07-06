@@ -10,7 +10,6 @@ class ForecastDay with _$ForecastDay {
     required DateTime datetime,
     required double temp,
     required String icon,
-    required String description,
   }) = _ForecastDay;
 
   factory ForecastDay.fromJson(Map<String, Object?> json) =>

@@ -11,7 +11,6 @@ _$ForecastDayImpl _$$ForecastDayImplFromJson(Map<String, dynamic> json) =>
       datetime: DateTime.parse(json['datetime'] as String),
       temp: (json['temp'] as num).toDouble(),
       icon: json['icon'] as String,
-      description: json['description'] as String,
     );
 
 Map<String, dynamic> _$$ForecastDayImplToJson(_$ForecastDayImpl instance) =>
@@ -19,5 +18,4 @@ Map<String, dynamic> _$$ForecastDayImplToJson(_$ForecastDayImpl instance) =>
       'datetime': instance.datetime.toIso8601String(),
       'temp': instance.temp,
       'icon': instance.icon,
-      'description': instance.description,
     };

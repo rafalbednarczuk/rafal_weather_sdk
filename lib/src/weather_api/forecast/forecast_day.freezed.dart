@@ -23,7 +23,6 @@ mixin _$ForecastDay {
   DateTime get datetime => throw _privateConstructorUsedError;
   double get temp => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +36,7 @@ abstract class $ForecastDayCopyWith<$Res> {
           ForecastDay value, $Res Function(ForecastDay) then) =
       _$ForecastDayCopyWithImpl<$Res, ForecastDay>;
   @useResult
-  $Res call({DateTime datetime, double temp, String icon, String description});
+  $Res call({DateTime datetime, double temp, String icon});
 }
 
 /// @nodoc
@@ -56,7 +55,6 @@ class _$ForecastDayCopyWithImpl<$Res, $Val extends ForecastDay>
     Object? datetime = null,
     Object? temp = null,
     Object? icon = null,
-    Object? description = null,
   }) {
     return _then(_value.copyWith(
       datetime: null == datetime
@@ -71,10 +69,6 @@ class _$ForecastDayCopyWithImpl<$Res, $Val extends ForecastDay>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -87,7 +81,7 @@ abstract class _$$ForecastDayImplCopyWith<$Res>
       __$$ForecastDayImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime datetime, double temp, String icon, String description});
+  $Res call({DateTime datetime, double temp, String icon});
 }
 
 /// @nodoc
@@ -104,7 +98,6 @@ class __$$ForecastDayImplCopyWithImpl<$Res>
     Object? datetime = null,
     Object? temp = null,
     Object? icon = null,
-    Object? description = null,
   }) {
     return _then(_$ForecastDayImpl(
       datetime: null == datetime
@@ -119,10 +112,6 @@ class __$$ForecastDayImplCopyWithImpl<$Res>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -131,10 +120,7 @@ class __$$ForecastDayImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ForecastDayImpl implements _ForecastDay {
   const _$ForecastDayImpl(
-      {required this.datetime,
-      required this.temp,
-      required this.icon,
-      required this.description});
+      {required this.datetime, required this.temp, required this.icon});
 
   factory _$ForecastDayImpl.fromJson(Map<String, dynamic> json) =>
       _$$ForecastDayImplFromJson(json);
@@ -145,12 +131,10 @@ class _$ForecastDayImpl implements _ForecastDay {
   final double temp;
   @override
   final String icon;
-  @override
-  final String description;
 
   @override
   String toString() {
-    return 'ForecastDay(datetime: $datetime, temp: $temp, icon: $icon, description: $description)';
+    return 'ForecastDay(datetime: $datetime, temp: $temp, icon: $icon)';
   }
 
   @override
@@ -161,15 +145,12 @@ class _$ForecastDayImpl implements _ForecastDay {
             (identical(other.datetime, datetime) ||
                 other.datetime == datetime) &&
             (identical(other.temp, temp) || other.temp == temp) &&
-            (identical(other.icon, icon) || other.icon == icon) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.icon, icon) || other.icon == icon));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, datetime, temp, icon, description);
+  int get hashCode => Object.hash(runtimeType, datetime, temp, icon);
 
   @JsonKey(ignore: true)
   @override
@@ -189,8 +170,7 @@ abstract class _ForecastDay implements ForecastDay {
   const factory _ForecastDay(
       {required final DateTime datetime,
       required final double temp,
-      required final String icon,
-      required final String description}) = _$ForecastDayImpl;
+      required final String icon}) = _$ForecastDayImpl;
 
   factory _ForecastDay.fromJson(Map<String, dynamic> json) =
       _$ForecastDayImpl.fromJson;
@@ -201,8 +181,6 @@ abstract class _ForecastDay implements ForecastDay {
   double get temp;
   @override
   String get icon;
-  @override
-  String get description;
   @override
   @JsonKey(ignore: true)
   _$$ForecastDayImplCopyWith<_$ForecastDayImpl> get copyWith =>

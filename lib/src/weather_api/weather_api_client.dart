@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_response.dart';
-import 'package:rafal_weather_sdk/src/weather_api/unit_group.dart';
+
+final _dateQueryParameterFormat = DateFormat("yyyy-MM-dd");
 
 /// API client for [https://www.visualcrossing.com]
 ///
@@ -12,7 +14,6 @@ import 'package:rafal_weather_sdk/src/weather_api/unit_group.dart';
 /// See also:
 ///
 ///  * [WeatherForecastView], which displays forecast as a Widget
-
 class WeatherApiClient {
   final String _apiKey;
   final bool _logHttpRequests;
@@ -23,6 +24,8 @@ class WeatherApiClient {
     ),
   );
 
+  /// Default constructor, requires valid [https://www.visualcrossing.com] apiKey.
+  /// If logHttpRequests parameter is set to true, it logs each network request to visual crossing API.
   WeatherApiClient({
     required String apiKey,
     bool logHttpRequests = false,
@@ -51,18 +54,27 @@ class WeatherApiClient {
   }
 
   /// Get a forecast in form of a list of [ForecastDay] for the next 15 days for the given location.
-  /// location can be provided as a city name, for example "New York" or
+  /// location parameter can be provided as a city name, for example "New York" or
   /// provided as latitude and longitude coordinates, for example  "40.73,-73.93".
   /// unitGroup parameter sets the type of units in the [ForecastDay] model.
+  /// date parameter sets the start of the forecast.
   ///
   /// returns null if there is a connection error, API error or data parsing error
   Future<List<ForecastDay>?> getForecast({
     required String location,
     required UnitGroup unitGroup,
+    DateTime? date,
   }) async {
+    final forecastStartDate = date ?? DateTime.now();
+    final forecastEndDate = forecastStartDate.add(const Duration(days: 15));
+    final forecastStartFormatted =
+        _dateQueryParameterFormat.format(forecastStartDate);
+    final forecastEndFormatted =
+        _dateQueryParameterFormat.format(forecastEndDate);
+
     try {
       final response = await _dioClient.get(
-        location,
+        "$location/$forecastStartFormatted/$forecastEndFormatted",
         queryParameters: {"unitGroup": unitGroup.name.toLowerCase()},
       );
       final forecastResponse =
