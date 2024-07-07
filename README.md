@@ -77,7 +77,7 @@ WeatherForecastView.fromForecastData(
 ### WeatherForecastTile
 ![](https://raw.githubusercontent.com/rafalbednarczuk/rafal_weather_sdk/master/images/single.jpg)
 
-WeatherForecastTile is a widget that displays a single day widget from ForecastDay model.
+WeatherForecastTile is a widget that displays a single day widget using ForecastDay model.
 
 An example of how to use it:
 ```dart
