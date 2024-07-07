@@ -36,7 +36,7 @@ It supports two temperature units groups:
 - metric (°C)
 - us (°F)
 
-An example of how to use with weatherApiClient:
+An example of how to use WeatherForecastView with weatherApiClient:
 ```dart
 WeatherForecastView.fromApiClient(
   location: "New york",
@@ -45,7 +45,7 @@ WeatherForecastView.fromApiClient(
 )
 ```
 
-An example of how to use with provided forecast data:
+An example of how to use WeatherForecastView with provided forecast data:
 ```dart
 WeatherForecastView.fromForecastData(
     forecastData: [
