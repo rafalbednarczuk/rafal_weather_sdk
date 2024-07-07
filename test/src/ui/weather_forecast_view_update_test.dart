@@ -2,12 +2,11 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
-import '../../load_test_file.dart';
 import 'weather_forecast_test_page.dart';
+import '../../load_test_file.dart';
 
 void main() {
   group("WeatherForecastView update test", () {

@@ -18,8 +18,8 @@ class WeatherApiClient {
   final String _apiKey;
   late Dio _dio;
 
-  /// Default constructor, requires valid [https://www.visualcrossing.com] apiKey.
-  /// If logHttpRequests parameter is set to true, it logs each network request to visual crossing API.
+  /// Creates [WeatherApiClient] based on [https://www.visualcrossing.com] [apiKey].
+  /// A [dio] can be provided to for example add network logging.
   WeatherApiClient({
     required String apiKey,
     Dio? dio,
@@ -38,10 +38,10 @@ class WeatherApiClient {
   }
 
   /// Get a forecast in form of a list of [ForecastDay] for the next 15 days for the given location.
-  /// location parameter can be provided as a city name, for example "New York" or
+  /// [location] can be provided as a city name, for example "New York" or
   /// provided as latitude and longitude coordinates, for example  "40.73,-73.93".
-  /// unitGroup parameter sets the type of units in the [ForecastDay] model.
-  /// date parameter sets the start of the forecast.
+  /// [unitGroup] sets the type of units in the [ForecastDay] model.
+  /// [date] sets the start of the forecast.
   ///
   /// returns null if there is a connection error, API error or data parsing error
   Future<List<ForecastDay>?> getForecast({

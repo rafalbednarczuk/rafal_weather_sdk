@@ -21,7 +21,6 @@ import 'package:rafal_weather_sdk/src/weather_api/weather_api_client.dart';
 /// See also:
 ///
 ///  * [WeatherApiClient], which accesses forecast data directly
-
 class WeatherForecastView extends StatefulWidget {
   final String? location;
   final WeatherApiClient? weatherApiClient;
@@ -29,7 +28,7 @@ class WeatherForecastView extends StatefulWidget {
   final UnitGroup? unitGroup;
   final List<ForecastDay>? forecastData;
 
-  /// Creates Forecast View based on real data from [WeatherApiClient]
+  /// Creates [WeatherForecastView] based on live data from [WeatherApiClient]
   WeatherForecastView.fromApiClient({
     super.key,
     required this.location,
@@ -39,7 +38,7 @@ class WeatherForecastView extends StatefulWidget {
   })  : date = date ?? DateTime.now(),
         forecastData = null;
 
-  /// Creates Forecast View based on provided [ForecastDay] list
+  /// Creates [WeatherForecastView] based on provided [ForecastDay] list
   const WeatherForecastView.fromForecastData({
     super.key,
     required List<ForecastDay> this.forecastData,

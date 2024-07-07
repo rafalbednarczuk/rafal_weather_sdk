@@ -2,14 +2,12 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:rafal_weather_sdk/src/ui/weather_forecast_view.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
 import 'package:rafal_weather_sdk/src/weather_api/unit_group.dart';
 import 'package:rafal_weather_sdk/src/weather_api/weather_api_client.dart';
-
 import '../../load_test_file.dart';
 
 void main() {
