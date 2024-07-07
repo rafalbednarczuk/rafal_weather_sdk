@@ -1,0 +1,42 @@
+{
+  "queryCost": 1,
+  "latitude": 52.2356,
+  "longitude": 21.0104,
+  "resolvedAddress": "Warszawa, Woj. Mazowieckie, Polska",
+  "address": "Warsaw",
+  "timezone": "Europe/Warsaw",
+  "tzoffset": 2.0,
+  "days": [],
+  "stations": {
+    "E1334": {
+      "distance": 18083.0,
+      "latitude": 52.307,
+      "longitude": 20.772,
+      "useCount": 0,
+      "id": "E1334",
+      "name": "EW1334 Truskaw PL",
+      "quality": 0,
+      "contribution": 0.0
+    },
+    "EPWA": {
+      "distance": 7805.0,
+      "latitude": 52.17,
+      "longitude": 20.97,
+      "useCount": 0,
+      "id": "EPWA",
+      "name": "EPWA",
+      "quality": 50,
+      "contribution": 0.0
+    },
+    "EPMO": {
+      "distance": 34211.0,
+      "latitude": 52.45,
+      "longitude": 20.65,
+      "useCount": 0,
+      "id": "EPMO",
+      "name": "EPMO",
+      "quality": 50,
+      "contribution": 0.0
+    }
+  }
+}

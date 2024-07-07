@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
-import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_response.dart';
 
 final _dateQueryParameterFormat = DateFormat("yyyy-MM-dd");
+const _baseUrl =
+    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
 /// API client for [https://www.visualcrossing.com]
 ///
@@ -16,22 +16,16 @@ final _dateQueryParameterFormat = DateFormat("yyyy-MM-dd");
 ///  * [WeatherForecastView], which displays forecast as a Widget
 class WeatherApiClient {
   final String _apiKey;
-  final bool _logHttpRequests;
-  final _dioClient = Dio(
-    BaseOptions(
-      baseUrl:
-          "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/",
-    ),
-  );
+  late Dio _dio;
 
   /// Default constructor, requires valid [https://www.visualcrossing.com] apiKey.
   /// If logHttpRequests parameter is set to true, it logs each network request to visual crossing API.
   WeatherApiClient({
     required String apiKey,
-    bool logHttpRequests = false,
-  })  : _logHttpRequests = logHttpRequests,
-        _apiKey = apiKey {
-    _dioClient.interceptors.add(
+    Dio? dio,
+  }) : _apiKey = apiKey {
+    _dio = dio ?? Dio(BaseOptions(baseUrl: _baseUrl));
+    _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
           options.queryParameters["key"] = _apiKey;
@@ -41,16 +35,6 @@ class WeatherApiClient {
         },
       ),
     );
-    if (_logHttpRequests) {
-      _dioClient.interceptors.add(
-        PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseHeader: true,
-          responseBody: true,
-        ),
-      );
-    }
   }
 
   /// Get a forecast in form of a list of [ForecastDay] for the next 15 days for the given location.
@@ -71,10 +55,9 @@ class WeatherApiClient {
         _dateQueryParameterFormat.format(forecastStartDate);
     final forecastEndFormatted =
         _dateQueryParameterFormat.format(forecastEndDate);
-
     try {
-      final response = await _dioClient.get(
-        "$location/$forecastStartFormatted/$forecastEndFormatted",
+      final response = await _dio.get(
+        "$_baseUrl$location/$forecastStartFormatted/$forecastEndFormatted",
         queryParameters: {"unitGroup": unitGroup.name.toLowerCase()},
       );
       final forecastResponse =

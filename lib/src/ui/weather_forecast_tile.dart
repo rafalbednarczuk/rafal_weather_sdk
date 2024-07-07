@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
+import 'package:rafal_weather_sdk/src/weather_api/unit_group.dart';
 
 final _dayOfWeekDateFormat = DateFormat(DateFormat.ABBR_MONTH_DAY);
 
@@ -37,7 +37,8 @@ class WeatherForecastTile extends StatelessWidget {
               height: 64,
             ),
             // Text(day.icon),
-            Text("${day.temp}${unitGroup.toTemperatureSymbol()}"),
+            Text(
+                "${day.temp.toStringAsFixed(1)}${unitGroup.toTemperatureSymbol()}"),
           ],
         ),
       ),
@@ -47,7 +48,7 @@ class WeatherForecastTile extends StatelessWidget {
 
 extension _IconAssetExtension on ForecastDay {
   String toAssetString() {
-    return "assets/$icon.png";
+    return "assets/icon/$icon.png";
   }
 }
 

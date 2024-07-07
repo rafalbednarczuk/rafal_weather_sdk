@@ -10,7 +10,6 @@ void main() async {
   final weatherApiClient = WeatherApiClient(
     // TODO: replace with https://www.visualcrossing.com key
     apiKey: weatherApiComKey,
-    logHttpRequests: true,
   );
   runApp(
     Provider.value(

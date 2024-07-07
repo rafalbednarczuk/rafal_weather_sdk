@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
 import 'package:rafal_weather_sdk/src/ui/weather_forecast_tile.dart';
 import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
+import 'package:rafal_weather_sdk/src/weather_api/unit_group.dart';
+import 'package:rafal_weather_sdk/src/weather_api/weather_api_client.dart';
 
 /// A widget that displays daily forecast for the next 4 days.
 ///
@@ -39,7 +40,7 @@ class WeatherForecastView extends StatefulWidget {
         forecastData = null;
 
   /// Creates Forecast View based on provided [ForecastDay] list
-  const WeatherForecastView.fromForecastDays({
+  const WeatherForecastView.fromForecastData({
     super.key,
     required List<ForecastDay> this.forecastData,
     required this.unitGroup,
