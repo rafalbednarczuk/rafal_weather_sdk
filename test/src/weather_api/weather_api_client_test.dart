@@ -1,19 +1,19 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
+
+import '../../load_test_file.dart';
 
 void main() async {
   group("WeatherApiClient", () {
     late Object successfulResponseData;
 
     setUp(() async {
-      TestWidgetsFlutterBinding.ensureInitialized();
-      successfulResponseData = jsonDecode(await rootBundle
-          .loadString("assets/json/forecast_successful_metric_response.json"));
+      successfulResponseData = jsonDecode(
+          await loadTestResource("forecast_successful_metric_response.json"));
     });
 
     test("Successful response", () async {

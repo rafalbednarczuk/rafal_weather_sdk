@@ -5,7 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
-import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
+import 'package:rafal_weather_sdk/src/ui/weather_forecast_view.dart';
+import 'package:rafal_weather_sdk/src/weather_api/forecast/forecast_day.dart';
+import 'package:rafal_weather_sdk/src/weather_api/unit_group.dart';
+import 'package:rafal_weather_sdk/src/weather_api/weather_api_client.dart';
+
+import '../../load_test_file.dart';
 
 void main() {
   group("WeatherForecastView tests", () {
@@ -14,13 +19,12 @@ void main() {
     late Object successfulResponseEmptyData;
 
     setUp(() async {
-      TestWidgetsFlutterBinding.ensureInitialized();
-      successfulResponseMetricData = jsonDecode(await rootBundle
-          .loadString("assets/json/forecast_successful_metric_response.json"));
-      successfulResponseImperialData = jsonDecode(await rootBundle.loadString(
-          "assets/json/forecast_successful_imperial_response.json"));
-      successfulResponseEmptyData = jsonDecode(await rootBundle.loadString(
-          "assets/json/forecast_successful_metric_empty_data_response.json"));
+      successfulResponseMetricData = jsonDecode(
+          await loadTestResource("forecast_successful_metric_response.json"));
+      successfulResponseImperialData = jsonDecode(
+          await loadTestResource("forecast_successful_imperial_response.json"));
+      successfulResponseEmptyData = jsonDecode(await loadTestResource(
+          "forecast_successful_metric_empty_data_response.json"));
     });
 
     testWidgets('View from forecast data, metrics unit', (tester) async {

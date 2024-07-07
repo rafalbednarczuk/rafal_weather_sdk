@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
+import '../../load_test_file.dart';
 import 'weather_forecast_test_page.dart';
 
 void main() {
@@ -14,11 +15,10 @@ void main() {
     late Object successfulResponseNewYorkData;
 
     setUp(() async {
-      TestWidgetsFlutterBinding.ensureInitialized();
-      successfulResponseWarsawData = jsonDecode(await rootBundle
-          .loadString("assets/json/forecast_successful_metric_response.json"));
-      successfulResponseNewYorkData = jsonDecode(await rootBundle.loadString(
-          "assets/json/forecast_successful_metric_new_york_response.json"));
+      successfulResponseWarsawData = jsonDecode(
+          await loadTestResource("forecast_successful_metric_response.json"));
+      successfulResponseNewYorkData = jsonDecode(await loadTestResource(
+          "forecast_successful_metric_new_york_response.json"));
     });
 
     testWidgets('Location update, from Warsaw to New York', (tester) async {
