@@ -1,39 +1,98 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# rafal_weather_sdk
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A library for accessing and displaying the weather forecast.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+### Installation
+```
+flutter pub add rafal_weather_sdk
 ```
 
-## Additional information
+### WeatherApiClient usage
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+WeatherAPIClient is visualcrossing.com API wrapper that requires API key that you can get at https://www.visualcrossing.com/
+
+An example of how to use WeatherAPIClient:
+```dart
+final weatherApiClient = WeatherApiClient(
+  // TODO: replace with https://www.visualcrossing.com key
+  apiKey: weatherApiComKey,
+);
+final forecast = await weatherApiClient.getForecast(
+  location: "New York", 
+  unitGroup: UnitGroup.metric,
+);
+forecast?.forEach((forecastDay) {
+  print(forecastDay);
+});
+```
+
+
+### WeatherForecastView
+![](https://raw.githubusercontent.com/rafalbednarczuk/rafal_weather_sdk/master/images/view.jpg)
+
+WeatherForecastView is a widget that can be used with live data that comes from WeatherApiClient
+or with provided forecast data.  
+It supports two temperature units groups:
+- metric (°C)
+- us (°F)
+
+An example of how to use with weatherApiClient:
+```dart
+WeatherForecastView.fromApiClient(
+  location: "New york",
+  weatherApiClient: weatherApiClient,
+  unitGroup: UnitGroup.metric,
+)
+```
+
+An example of how to use with provided forecast data:
+```dart
+WeatherForecastView.fromForecastData(
+    forecastData: [
+        ForecastDay(
+            datetime: DateTime(2024, 7, 6),
+            temp: 5,
+            icon: "cloudy",
+        ),
+        ForecastDay(
+            datetime: DateTime(2024, 7, 7),
+            temp: 10,
+            icon: "fog",
+        ),
+        ForecastDay(
+            datetime: DateTime(2024, 7, 8),
+            temp: -5,
+            icon: "snow",
+        ),
+        ForecastDay(
+            datetime: DateTime(2024, 7, 9),
+            temp: 5,
+            icon: "wind",
+            ),
+    ],
+    unitGroup: UnitGroup.metric,
+)
+```
+
+### WeatherForecastTile
+![](https://raw.githubusercontent.com/rafalbednarczuk/rafal_weather_sdk/master/images/single.jpg)
+
+WeatherForecastTile is a widget that displays a single day widget from ForecastDay model.
+
+An example of how to use it:
+```dart
+WeatherForecastTile(
+    day: ForecastDay(
+      datetime: DateTime(2024, 7, 6),
+      temp: 30,
+      icon: "clear-day",
+    ),
+    unitGroup: UnitGroup.metric,
+)
+```
+
+
+### Icons
+
+Icons used in ForecastDay match the icons from `WeatherIcons` library.  
+To use a specific icon by its name, check it in this [repository](https://github.com/visualcrossing/WeatherIcons/tree/main/PNG/1st%20Set%20-%20Color) 
