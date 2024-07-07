@@ -92,6 +92,6 @@ WeatherForecastTile(
 ```
 
 
-### Icons
+### Weather icons
 
-To see all the icons with their names, see [assets folder](https://github.com/rafalbednarczuk/rafal_weather_sdk/tree/master/assets/icon) 
+To see all the weather icons with their names, see [assets folder](https://github.com/rafalbednarczuk/rafal_weather_sdk/tree/master/assets/icon) 
