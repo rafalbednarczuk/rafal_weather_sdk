@@ -99,7 +99,7 @@ void main() {
       expect(find.text("-5.0°C"), findsOneWidget);
     });
 
-    testWidgets('View from forecast days metrics unit', (tester) async {
+    testWidgets('View from forecast days, imperial unit', (tester) async {
       final days = [
         ForecastDay(
           datetime: DateTime(2024, 7, 6),
