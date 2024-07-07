@@ -94,5 +94,4 @@ WeatherForecastTile(
 
 ### Icons
 
-Icons used in `ForecastDay` match the icons from `WeatherIcons` library.  
-To use a specific icon by its name, check it in this [repository](https://github.com/visualcrossing/WeatherIcons/tree/main/PNG/1st%20Set%20-%20Color) 
+To see all the icons with their names, see [assets folder](https://github.com/rafalbednarczuk/rafal_weather_sdk/tree/master/assets/icon) 
