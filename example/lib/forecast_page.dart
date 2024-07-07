@@ -39,8 +39,7 @@ class _ForecastPageState extends State<ForecastPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             OutlinedButton(
                 onPressed: _pickForecastDate,
