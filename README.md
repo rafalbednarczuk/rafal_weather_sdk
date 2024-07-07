@@ -9,9 +9,9 @@ flutter pub add rafal_weather_sdk
 
 ### WeatherApiClient usage
 
-WeatherAPIClient is visualcrossing.com API wrapper that requires API key that you can get at https://www.visualcrossing.com/
+`WeatherAPIClient` is visualcrossing.com API wrapper that requires API key that you can get at https://www.visualcrossing.com/
 
-An example of how to use WeatherAPIClient:
+An example of how to use `WeatherAPIClient`:
 ```dart
 final weatherApiClient = WeatherApiClient(
   // TODO: replace with https://www.visualcrossing.com key
@@ -30,13 +30,13 @@ forecast?.forEach((forecastDay) {
 ### WeatherForecastView
 ![](https://raw.githubusercontent.com/rafalbednarczuk/rafal_weather_sdk/master/images/view.jpg)
 
-WeatherForecastView is a widget that can be used with live data that comes from WeatherApiClient
+`WeatherForecastView` is a widget that can be used with live data that comes from `WeatherApiClient`
 or with provided forecast data.  
 It supports two temperature units groups:
-- metric (°C)
-- us (°F)
+- `metric` (°C)
+- `us` (°F)
 
-An example of how to use WeatherForecastView with weatherApiClient:
+An example of how to use `WeatherForecastView` with `WeatherApiClient`:
 ```dart
 WeatherForecastView.fromApiClient(
   location: "New york",
@@ -45,7 +45,7 @@ WeatherForecastView.fromApiClient(
 )
 ```
 
-An example of how to use WeatherForecastView with provided forecast data:
+An example of how to use `WeatherForecastView` with provided forecast data:
 ```dart
 WeatherForecastView.fromForecastData(
     forecastData: [
@@ -77,7 +77,7 @@ WeatherForecastView.fromForecastData(
 ### WeatherForecastTile
 ![](https://raw.githubusercontent.com/rafalbednarczuk/rafal_weather_sdk/master/images/single.jpg)
 
-WeatherForecastTile is a widget that displays a single day widget using ForecastDay model.
+`WeatherForecastTile` is a widget that displays a single day widget using `ForecastDay` model.
 
 An example of how to use it:
 ```dart
@@ -94,5 +94,5 @@ WeatherForecastTile(
 
 ### Icons
 
-Icons used in ForecastDay match the icons from `WeatherIcons` library.  
+Icons used in `ForecastDay` match the icons from `WeatherIcons` library.  
 To use a specific icon by its name, check it in this [repository](https://github.com/visualcrossing/WeatherIcons/tree/main/PNG/1st%20Set%20-%20Color) 
