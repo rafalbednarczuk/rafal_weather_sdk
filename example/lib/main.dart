@@ -1,9 +1,10 @@
 import 'package:example/picker_page.dart';
+
+//TODO: remove the import as the file is gitignored to not leak the key
 import 'package:example/weather_api_key.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-//TODO: remove the import as the file is gitignored to not leak the key
 import 'package:rafal_weather_sdk/rafal_weather_sdk.dart';
 
 void main() async {
